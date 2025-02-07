@@ -20,6 +20,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // 🔹 1. Показываем фейковый LaunchScreen
         let loadingVC = LaunchScreenVC()
         window.rootViewController = loadingVC
+        
+        
+        
         window.makeKeyAndVisible()
         
         // ⏳ 2. Через 2 секунды загружаем TabBarController
