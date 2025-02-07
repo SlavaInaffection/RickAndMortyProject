@@ -9,7 +9,7 @@ import UIKit
 
 class SecondViewController: UIViewController {
     
-    
+    //MARK: - Images
     var ramImageView : UIImageView = {
         var image = UIImage(named: "Ram")
         var ramImage = UIImageView(image: image)
@@ -17,6 +17,9 @@ class SecondViewController: UIViewController {
         ramImage.translatesAutoresizingMaskIntoConstraints = false
         return ramImage
     }()
+
+    var favoritesImage = UIImage(named: "Favorites")?.resized(to: 0.5)
+    
     
     
     override func viewDidLoad() {
@@ -30,19 +33,10 @@ class SecondViewController: UIViewController {
         navigationItem.titleView = ramImageView
         
         view.backgroundColor = .white
-        self.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
+        self.tabBarItem = UITabBarItem(title: "Favorites", image: favoritesImage, tag: 1)
         // Do any additional setup after loading the view.
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+  
 }
