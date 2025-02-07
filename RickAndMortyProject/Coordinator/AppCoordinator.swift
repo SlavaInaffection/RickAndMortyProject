@@ -10,12 +10,12 @@ import UIKit
 // MARK: - Coordinator
 import UIKit
 
-protocol Coordinator {
+protocol Coordinator { // Создаем координатор через протокол и сетаем чайлдкоординаторы
     var childCoordinators: [Coordinator] { get set }
     func start()
 }
 
-class TabBarCoordinator: Coordinator {
+class TabBarCoordinator: Coordinator {  // Создаем класс ТабБарКоординатор, инитаем его
     var childCoordinators = [Coordinator]()
     var tabBarController: UITabBarController
 
@@ -23,21 +23,21 @@ class TabBarCoordinator: Coordinator {
         self.tabBarController = tabBarController
     }
 
-    func start() {
+    func start() { // Делаем функцию с координаторами для каждой вьюхи которая имеет таббар
         let firstCoordinator = FirstCoordinator()
         let secondCoordinator = SecondCoordinator()
 
-        childCoordinators.append(firstCoordinator)
+        childCoordinators.append(firstCoordinator) // Подключаем их
         childCoordinators.append(secondCoordinator)
 
         firstCoordinator.start()
         secondCoordinator.start()
 
-        tabBarController.viewControllers = [firstCoordinator.navigationController, secondCoordinator.navigationController]
+        tabBarController.viewControllers = [firstCoordinator.navigationController, secondCoordinator.navigationController] // Привязываем к вьюхам
     }
 }
 
-class FirstCoordinator: Coordinator {
+class FirstCoordinator: Coordinator { // делаем координаторы которые мы сделали ранее
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
 
@@ -45,7 +45,7 @@ class FirstCoordinator: Coordinator {
         self.navigationController = UINavigationController()
     }
 
-    func start() {
+    func start() { // подключаем вьюху с навигатором
         let vc = ViewController()
         navigationController.viewControllers = [vc]
     }

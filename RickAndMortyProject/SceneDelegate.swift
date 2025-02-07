@@ -17,19 +17,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         self.window = window
         
-        // 🔹 1. Показываем фейковый LaunchScreen
+        // ЛаунчСкрин
         let loadingVC = LaunchScreenVC()
         window.rootViewController = loadingVC
+        
+        
+        
         window.makeKeyAndVisible()
         
-        // ⏳ 2. Через 2 секунды загружаем TabBarController
+        // Через 3 секунды загружаем TabBarController
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             let tabBarController = UITabBarController()
             let tabBarCoordinator = TabBarCoordinator(tabBarController: tabBarController)
             self.tabBarCoordinator = tabBarCoordinator
             tabBarCoordinator.start()
             
-            // 🔹 3. Устанавливаем TabBarController как RootViewController
+            //  Устанавливаем TabBarController как RootViewController
             window.rootViewController = tabBarController
         }
     }
